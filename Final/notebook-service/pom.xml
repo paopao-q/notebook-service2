@@ -102,17 +102,16 @@
 
         </plugins>
     </build>
-
     <distributionManagement>
-    <repository>
-        <id>central</id>
-        <name>libs-release</name>
-        <url>http://localhost:8083/artifactory/libs-release</url>
-    </repository>
-    <snapshotRepository>
-        <id>snapshots</id>
-        <name>libs-release</name>
-        <url>http://localhost:8083/artifactory/libs-release</url>
-    </snapshotRepository>
+        <repository>
+            <id>central</id>
+            <name>3da56f072012-releases</name>
+            <url>http://localhost:8083/artifactory/libs-release-local</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>3da56f072012-snapshots</name>
+            <url>http://localhost:8083/artifactory/libs-release-local</url>
+        </snapshotRepository>
     </distributionManagement>
 </project>
