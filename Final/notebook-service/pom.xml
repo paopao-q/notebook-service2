@@ -106,13 +106,13 @@
     <distributionManagement>
     <repository>
         <id>central</id>
-        <name>releases</name>
+        <name>libs-release</name>
         <url>http://localhost:8083/artifactory/libs-release</url>
     </repository>
     <snapshotRepository>
-        <id>central-snapshot</id>
-        <name>snapshot</name>
-        <url>http://localhost:8083/artifactory/libs-snapshot-local</url>
+        <id>snapshots</id>
+        <name>libs-release</name>
+        <url>http://localhost:8083/artifactory/libs-release</url>
     </snapshotRepository>
     </distributionManagement>
 </project>
