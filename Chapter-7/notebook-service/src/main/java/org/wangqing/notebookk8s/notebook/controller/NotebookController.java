@@ -16,9 +16,8 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/")
 public class NotebookController {
-
-	public static final String Index_Model = "index";
 	public static final String NOTEBOOKS_MODEL = "notebooks";
+	public static final String INDEX_VIEW = "index";
 	private final NotebookRepository notebookRepository;
 
 	@Autowired
@@ -34,7 +33,7 @@ public class NotebookController {
 	@GetMapping("list")
 	public String showUpdateForm(Model model) {
 		model.addAttribute(NOTEBOOKS_MODEL, notebookRepository.findAll());
-		return Index_Model;
+		return INDEX_VIEW;
 	}
 
 	@PostMapping("add")
@@ -65,7 +64,7 @@ public class NotebookController {
 
 		notebookRepository.save(notebook);
 		model.addAttribute(NOTEBOOKS_MODEL, notebookRepository.findAll());
-		return Index_Model;
+		return INDEX_VIEW;
 	}
 
 	@GetMapping("delete/{id}")
@@ -74,6 +73,6 @@ public class NotebookController {
 				.orElseThrow(() -> new IllegalArgumentException("Invalid notebook Id:" + id));
 		notebookRepository.delete(notebook);
 		model.addAttribute(NOTEBOOKS_MODEL, notebookRepository.findAll());
-		return Index_Model;
+		return INDEX_VIEW;
 	}
 }

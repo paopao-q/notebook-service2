@@ -19,6 +19,7 @@ import org.wangqing.notebookk8s.notebook.controller.NotebookController;
 import org.wangqing.notebookk8s.notebook.entity.Notebook;
 import org.wangqing.notebookk8s.notebook.repository.NotebookRepository;
 
+import java.io.Console;
 import java.util.Optional;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
@@ -62,6 +63,7 @@ public class ApplicationTests {
 		Optional<Notebook> nbList = notebookRepository.findById( TEST_NOTEBOOK_ID);
 		Notebook newNotebook = nbList.get();
 		Assert.assertEquals(TEST_EMAIL, newNotebook.getEmail());
+		System.out.println(TEST_EMAIL+", "+newNotebook.getEmail());
 	}
 
 	@Test
