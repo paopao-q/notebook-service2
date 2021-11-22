@@ -33,16 +33,17 @@ spec:
       containers:
         - name: notebook-service
           image: art.local:8081/docker/notebook-k8s/notebook-service:latest
-          env:
-            - name: DISCOVERY_URL
-              value: "http://eureka-server:8761"
-          livenessProbe:
-            httpGet:
-              path: /
-              port: 1111
-            initialDelaySeconds: 15
-            periodSeconds: 15
+#          commented by ryan
+#          env:
+#            - name: DISCOVERY_URL
+#              value: "http://eureka-server:8761"
+#          livenessProbe:
+#            httpGet:
+#              path: /
+#              port: 1111
+#            initialDelaySeconds: 15
+#            periodSeconds: 15
           ports:
             - containerPort: 1111
       imagePullSecrets:
-      - name: regcred-local
+      - name: k8s-cred-local

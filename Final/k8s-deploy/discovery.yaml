@@ -14,7 +14,8 @@ spec:
     run: eureka-server
   type: NodePort
 ---
-apiVersion: extensions/v1beta1
+#apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: eureka-server
@@ -22,10 +23,14 @@ metadata:
     run: eureka-server
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      run: eureka-server
   template:
     metadata:
       labels:
         run: eureka-server
+#         app: eureka-server
     spec:
       containers:
       - name: discovery-service
@@ -45,5 +50,4 @@ spec:
         - containerPort: 8761
           protocol: TCP
       imagePullSecrets:
-      - name: regcred-local
-
+      - name: k8s-cred-local

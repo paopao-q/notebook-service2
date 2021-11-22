@@ -14,7 +14,7 @@ spec:
     run: gateway-service
   type: NodePort
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: gateway-service
@@ -22,6 +22,9 @@ metadata:
     run: gateway-service
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      run: gateway-service
   template:
     metadata:
       labels:
@@ -32,19 +35,19 @@ spec:
         image: art.local:8081/docker/notebook-k8s/gateway-service:latest
         env:
           - name: NOTEBOOK_SERVICE
-            value: "192.168.99.100"
+            value: "192.168.49.2"
           - name: CONFIG_SERVER_PORT
             value: "30222"
           - name: NOTEBOOK_SERVICE
-            value: "192.168.99.100"
+            value: "192.168.49.2"
           - name: NOTEBOOK_SERVICE_PORT
             value: "30555"
           - name: ZIPKIN_SERVER
-            value: "192.168.99.100"
+            value: "192.168.49.2"
           - name: ZIPKIN_SERVER_PORT
             value: "30411"
         ports:
         - containerPort: 8765
           protocol: TCP
       imagePullSecrets:
-      - name: regcred-local
+      - name: k8s-cred-local
